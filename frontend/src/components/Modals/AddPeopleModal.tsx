@@ -27,7 +27,7 @@ const AddPeopleModal = ({ isOpen, onClose , onSuccess}: AddPeopleModalProps) => 
         return;
       }
 
-      const response = await axios.post(`${process.env.VITE_BACKEND_URL}/api/board/add-member`, { email }, {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/board/add-member`, { email }, {
         headers: {
           Authorization: `Bearer ${token}`
         }

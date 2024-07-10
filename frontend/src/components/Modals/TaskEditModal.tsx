@@ -26,7 +26,7 @@ const TaskEditModal = ({ isOpen, onClose, task, setTask }: TaskEditModalProps) =
       }
 
       const response = await axios.put(
-        `${process.env.VITE_BACKEND_URL}/api/task/${task._id}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/task/${task._id}`,
         task,
         {
           headers: {

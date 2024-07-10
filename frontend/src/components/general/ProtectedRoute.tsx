@@ -21,7 +21,7 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   const getUserData = async () => {
     try {
       const token = localStorage.getItem('authToken');
-      const response = await axios.get(`${process.env.VITE_BACKEND_URL}/api/user/me`, {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/user/me`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },

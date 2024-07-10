@@ -37,7 +37,7 @@ const AddTaskModal = ({ isOpen, onClose }: AddTaskModalProps) => {
                 return;
             }
 
-            const response = await axios.post(`${process.env.VITE_BACKEND_URL}/api/task/tasks`, task, {
+            const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/task/tasks`, task, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

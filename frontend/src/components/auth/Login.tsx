@@ -30,7 +30,7 @@ function Login() {
                 email,
                 password,
             };
-            const response = await axios.post(`${process.env.VITE_BACKEND_URL}/api/user/login`, user);
+            const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/user/login`, user);
             if (response?.data.success) {
                 localStorage.setItem('authToken', response?.data.authToken);
                 toast.success(response?.data.message);
@@ -43,6 +43,7 @@ function Login() {
                 setErrors(err.response.data.errors);
             } else {
                 toast.error("Something went wrong!");
+                console.error(err)
             }
         } finally {
             setIsLoading(false); // Set loading to false

@@ -66,7 +66,7 @@ const TaskCard = ({ _id, title, priority, checklist, dueDate, type, collapseAll 
         return;
       }
 
-      const response = await axios.delete(`${process.env.VITE_BACKEND_URL}/api/task/${_id}`, {
+      const response = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/task/${_id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -135,7 +135,7 @@ const TaskCard = ({ _id, title, priority, checklist, dueDate, type, collapseAll 
         return;
       }
 
-      const response = await axios.put(`${process.env.VITE_BACKEND_URL}/api/task/${_id}`, {
+      const response = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/task/${_id}`, {
         checklist: updatedChecklist,
       }, {
         headers: {
@@ -171,7 +171,7 @@ const TaskCard = ({ _id, title, priority, checklist, dueDate, type, collapseAll 
         type: newType,
       };
 
-      const response = await axios.put(`${process.env.VITE_BACKEND_URL}/api/task/${_id}`, payload, {
+      const response = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/task/${_id}`, payload, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

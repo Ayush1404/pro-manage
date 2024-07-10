@@ -40,7 +40,7 @@ const TaskModal = ({ task, setTask, primaryAction, isOpen, onClose }: TaskModalP
             try {
                 setIsLoading(true)
                 const token = localStorage.getItem('authToken');
-                const response = await axios.get(`${process.env.VITE_BACKEND_URL}/api/board/board-members`, {
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/board/board-members`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
 
