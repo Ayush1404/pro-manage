@@ -1,0 +1,18 @@
+
+.filter {
+    margin-right: 1rem;
+}
+
+.dashboard-container {
+    display: flex; 
+    width: 100%; 
+    overflow-x: auto; 
+    white-space: nowrap; 
+    padding: 1rem;
+    box-sizing: border-box; 
+}
+.add-people-button{
+    font-size: small;
+    color: #707070;
+    cursor: pointer;
+}
