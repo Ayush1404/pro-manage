@@ -37,7 +37,7 @@ function Register() {
                 password,
                 confirmPassword
             };
-            const response = await axios.post(`${process.env.BACKEND_URL}/api/user/register`, user);
+            const response = await axios.post(`${process.env.VITE_BACKEND_URL}/api/user/register`, user);
             if (response?.data.success) {
                 localStorage.setItem('authToken', response?.data.authToken);
                 toast.success(response?.data.message);
