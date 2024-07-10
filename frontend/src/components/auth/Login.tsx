@@ -30,7 +30,7 @@ function Login() {
                 email,
                 password,
             };
-            const response = await axios.post('http://localhost:7000/api/user/login', user);
+            const response = await axios.post('process.env.BACKEND_URL/api/user/login', user);
             if (response?.data.success) {
                 localStorage.setItem('authToken', response?.data.authToken);
                 toast.success(response?.data.message);

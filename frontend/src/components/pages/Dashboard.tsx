@@ -38,7 +38,7 @@ const Dashboard = () => {
           return;
         }
 
-        const response = await axios.get('http://localhost:7000/api/user/tasks', {
+        const response = await axios.get(`${process.env.BACKEND_URL}/api/user/tasks`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },

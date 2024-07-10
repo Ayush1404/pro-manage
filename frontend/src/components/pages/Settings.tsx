@@ -55,7 +55,7 @@ const Settings = () => {
         payload.newPassword = newPassword;
       }
 
-      const response = await axios.put(`http://localhost:7000/api/user/${user.id}`, payload, {
+      const response = await axios.put(`${process.env.BACKEND_URL}/api/user/${user.id}`, payload, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },

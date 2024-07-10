@@ -21,7 +21,7 @@ const Analytics = () => {
                     return;
                 }
 
-                const response = await axios.get('http://localhost:7000/api/user/analytics', {
+                const response = await axios.get(`${process.env.BACKEND_URL}/api/user/analytics`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'id': localStorage.getItem('userId')

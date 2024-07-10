@@ -18,7 +18,7 @@ const TaskPublicView = () => {
         const fetchTask = async () => {
             try {
             setIsLoading(true)
-            const response = await axios.get(`http://localhost:7000/api/task/${taskId}`);
+            const response = await axios.get(`${process.env.BACKEND_URL}/api/task/${taskId}`);
         
             if (response.data.success) {
                 setTask(response.data.data); 

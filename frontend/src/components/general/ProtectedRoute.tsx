@@ -21,7 +21,7 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   const getUserData = async () => {
     try {
       const token = localStorage.getItem('authToken');
-      const response = await axios.get('http://localhost:7000/api/user/me', {
+      const response = await axios.get(`${process.env.BACKEND_URL}/api/user/me`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
