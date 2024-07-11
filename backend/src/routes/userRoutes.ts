@@ -155,8 +155,18 @@ router.put('/:userId', authenticatejwt, async (req: Request, res: Response) => {
 router.get('/analytics', authenticatejwt, async (req: Request, res: Response) => {
     try {
         const userId = req.headers.id;
-  
-        const tasks = await taskModel.find({ userid: userId });
+        
+        const user = await userModel.findOne({ _id: userId });
+        if (!user) {
+            return res.status(400).send({ message: "User does not exist", success: false });
+        }
+
+        const tasks = await taskModel.find({
+            $or: [
+            { userid: userId },
+            { assignedTo: user.email }
+            ]
+        });
   
         const backlogTasks = tasks.filter(task => task.type === 'backlog').length;
         const todoTasks = tasks.filter(task => task.type === 'todo').length;

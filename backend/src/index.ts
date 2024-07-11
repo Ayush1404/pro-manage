@@ -11,7 +11,7 @@ const app = express();
 const port = process.env.PORT || 7000;
 
 const corsOptions: CorsOptions = {
-  origin: 'https://pro-manage-client-7nrjx5dml-ayushs-projects-935f2cc5.vercel.app', 
+  origin: '*', 
   methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
   credentials: true,
 };

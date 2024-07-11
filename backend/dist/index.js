@@ -23,8 +23,9 @@ app.use(express_1.default.json());
 app.use('/api/user', userRoutes_1.router);
 app.use('/api/task', taskRoutes_1.router);
 app.use('/api/board', boardRoutes_1.router);
+app.options('*', (0, cors_1.default)(corsOptions)); // Handle preflight requests
 app.get('/', (req, res) => {
-    res.json("server is rinning");
+    res.json("server is running");
 });
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

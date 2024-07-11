@@ -150,7 +150,16 @@ router.put('/:userId', authMiddleware_1.authenticatejwt, (req, res) => __awaiter
 router.get('/analytics', authMiddleware_1.authenticatejwt, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const userId = req.headers.id;
-        const tasks = yield taskModel_1.taskModel.find({ userid: userId });
+        const user = yield userModel_1.userModel.findOne({ _id: userId });
+        if (!user) {
+            return res.status(400).send({ message: "User does not exist", success: false });
+        }
+        const tasks = yield taskModel_1.taskModel.find({
+            $or: [
+                { userid: userId },
+                { assignedTo: user.email }
+            ]
+        });
         const backlogTasks = tasks.filter(task => task.type === 'backlog').length;
         const todoTasks = tasks.filter(task => task.type === 'todo').length;
         const inProgressTasks = tasks.filter(task => task.type === 'inprogress').length;
@@ -231,19 +240,15 @@ router.get('/tasks', authMiddleware_1.authenticatejwt, (req, res) => __awaiter(v
         tasks.forEach(task => {
             switch (task.type) {
                 case 'todo':
-                    //@ts-ignore
                     categorizedTasks.todo.push(task);
                     break;
                 case 'inprogress':
-                    //@ts-ignore
                     categorizedTasks.inprogress.push(task);
                     break;
                 case 'backlog':
-                    //@ts-ignore
                     categorizedTasks.backlog.push(task);
                     break;
                 case 'done':
-                    //@ts-ignore
                     categorizedTasks.done.push(task);
                     break;
                 default:
