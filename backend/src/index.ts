@@ -5,13 +5,13 @@ dotenv.config();
 import './config/dbconfig';
 import { router as userRouter } from './routes/userRoutes';
 import { router as taskRouter } from './routes/taskRoutes'
-import { router as boardRouter} from './routes/boardRoutes'
+import { router as boardRouter } from './routes/boardRoutes'
 
 const app = express();
 const port = process.env.PORT || 7000;
 
 const corsOptions: CorsOptions = {
-  origin: '*', 
+  origin: 'https://pro-manage-client-7nrjx5dml-ayushs-projects-935f2cc5.vercel.app', 
   methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
   credentials: true,
 };
@@ -21,9 +21,10 @@ app.use(express.json());
 app.use('/api/user', userRouter);
 app.use('/api/task', taskRouter);
 app.use('/api/board', boardRouter);
+app.options('*', cors(corsOptions)); // Handle preflight requests
 app.get('/',(req,res)=>{
-    res.json("server is rinning")
-})
+    res.json("server is running")
+});
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
